@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chat App</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <h1>Chat Room</h1>
+    <div id="chat-window">
+      <% messages.forEach(message => { %>
+      <p>
+        <%= message.time.split('T')[1].split('.')[0] %> <%= message.user %>: <%=
+        message.body %>
+      </p>
+      <% }); %>
+    </div>
+
+    <form action="/send-message" method="POST">
+      <input
+        type="text"
+        name="username"
+        placeholder="Enter your username"
+        required
+      />
+      <input type="text" name="message" placeholder="Type a message" required />
+      <button type="submit">Send</button>
+    </form>
+  </body>
+</html>
